@@ -66,7 +66,52 @@ where d.id in ( --this is to only return the current/most recent department
 );
 
 --List all employees whose first name is "Hercules" and last names begin with "B."
-select e.first_name as "first name", e.last_name as "last name"
+select e.first_name as "first name", e.last_name as "last name" -- select required columns 
 from employee e
-where e.first_name = 'Hercules' and 
-e.last_name like 'B%';
+where e.first_name = 'Hercules' and --first name needs to be 'Hercules'
+e.last_name like 'B%'; -- last name needs to also start with "B"
+
+--List all employees in the Sales department, including their employee number, 
+--last name, first name, and department name.
+select /* select requiered columns */ e.emp_no as "employeen number", 
+e.first_name as "first name", e.last_name as "last name", n.dept_name
+from employee e --assign alis for table
+join department_employees d on --join department employees table
+d.emp_no = e.emp_no --fk relationship 
+join department_name n on  -- join department name table to be able to pull department name
+d.dept_no = n.dept_no 
+where d.dept_no in (
+	select d.dept_no
+	from department_employees d
+	join department_name n on
+	d.dept_no = n.dept_no
+	where n.dept_name = 'Sales' --filter to only select sales dept
+);
+
+--List all employees in the Sales and Development departments, including their employee 
+--number, last name, first name, and department name.
+select e.emp_no as "employeen number", e.first_name as "first name", 
+e.last_name as "last name", n.dept_name 
+from employee e
+join department_employees d on
+d.emp_no = e.emp_no
+join department_name n on 
+d.dept_no = n.dept_no
+where d.dept_no in (
+	select d.dept_no
+	from department_employees d
+	join department_name n on
+	d.dept_no = n.dept_no
+	where n.dept_name = 'Sales' or 
+	n.dept_name ='Development' -- filter to select either sales or Development depts
+);
+
+--In descending order, list the frequency count of employee last names, 
+--i.e., how many employees share each last name.
+select last_name as "last name", count(last_name) as "number with last name"
+--select last name column and create a count of instances of last name column
+from employee
+group by "last name" --group by the last name column 
+order by "number with last name" desc;
+
+
