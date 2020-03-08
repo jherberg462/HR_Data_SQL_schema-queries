@@ -1,4 +1,4 @@
-# SQL queries for employee data
+# SQL queries for HR data
 
 In this project, I created a schema for Human Resources ("HR") related data, so that said data can be imported into a SQL database. I also created various SQL queries that return information that someone working in HR may need in order to perform their job functions. 
 
