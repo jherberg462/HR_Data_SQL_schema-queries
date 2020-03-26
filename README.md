@@ -8,4 +8,4 @@ My schema created tables and columns within those tables that matched the data I
 
 ## SQL queries
 
-I drafted several queries that will return information that a HR professional may need to perform their job functions. My queries utilized left joins on primary key-foreigh key relationships between tables, sub queries to filter information I am intending to be returned, aliases to make writing the queries more concise. My queries also used regex to return information that matches regression input, ordering to display information deemed important first, and counts of column values. 
+I drafted several queries that will return information that a HR professional may need to perform their job functions. My queries utilized left joins on primary key-foreign key relationships between tables, subqueries to filter information I am intending to be returned, aliases to make writing the queries more concise. My queries also used regex to return information that matches regression input, ordering to display information deemed important first, and counts of column values. 
